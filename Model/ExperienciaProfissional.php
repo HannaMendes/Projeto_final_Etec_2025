@@ -3,14 +3,13 @@
 class ExperienciaProfissional
 {
     private $id;
-    private $idusuario;
+    private $usuario_id;
     private $inicio;
     private $fim;
     private $empresa;
     private $descricao;
     
-  
-    //ID
+    // ID
     public function setID($id)
     {
         $this->id = $id;
@@ -19,27 +18,28 @@ class ExperienciaProfissional
     {
         return $this->id;
     }
-    //idusuario
-    public function setIdUsuario($idusuario)
+
+    // usuario_id
+    public function setUsuarioId($usuario_id)
     {
-        $this->idusuario = $idusuario;
+        $this->usuario_id = $usuario_id;
     }
-    public function getIdUsuario()
+    public function getUsuarioId()
     {
-        return $this->idusuario;
+        return $this->usuario_id;
     }
 
-    //inicio
+    // inicio
     public function setInicio($inicio)
     {
         $this->inicio = $inicio;
     }
-       public function getInicio()
+    public function getInicio()
     {
         return $this->inicio;
     }
 
-     //fim
+    // fim
     public function setFim($fim)
     {
         $this->fim = $fim;
@@ -49,7 +49,7 @@ class ExperienciaProfissional
         return $this->fim;
     }
 
-    //Empresa
+    // Empresa
     public function setEmpresa($empresa)
     {
         $this->empresa = $empresa;
@@ -59,7 +59,7 @@ class ExperienciaProfissional
         return $this->empresa;
     }
 
-    //Descrição
+    // Descrição
     public function setDescricao($descricao)
     {
         $this->descricao = $descricao;
@@ -69,7 +69,7 @@ class ExperienciaProfissional
         return $this->descricao;
     }
 
-    //Métodos Banco de Dados
+    // Métodos Banco de Dados
     public function inserirBD()
     {
         require_once 'ConexaoBD.php';   
@@ -80,15 +80,13 @@ class ExperienciaProfissional
             die("Connection failed: " . $conn->connect_error);
         }
 
-       $sql = "INSERT INTO experienciaprofissional (idusuario, inicio, fim, empresa, descricao) 
-        VALUES ('".$this->idusuario."','".$this->inicio."','".$this->fim."','".$this->empresa."','".$this->descricao."')";
+        $sql = "INSERT INTO experienciaprofissional (usuario_id, inicio, fim, empresa, descricao) 
+                VALUES ('".$this->usuario_id."','".$this->inicio."','".$this->fim."','".$this->empresa."','".$this->descricao."')";
 
-      
         if ($conn->query($sql) === true) {
             $this->id = mysqli_insert_id($conn);
             $conn->close();
             return true;
-           
         } else {
             $conn->close();
             return false;
@@ -105,20 +103,18 @@ class ExperienciaProfissional
             die("Connection failed: " . $conn->connect_error);
         }
 
-       $sql = "DELETE FROM experienciaprofissional WHERE idexperienciaprofissional = '".$id ."';";
+        $sql = "DELETE FROM experienciaprofissional WHERE idexperienciaprofissional = '".$id."';";
 
-      
         if ($conn->query($sql) === true) {
-           
             $conn->close();
             return true;
-           
         } else {
             $conn->close();
             return false;
         }
     }
-    public function listaExperiencias($idusuario)
+
+    public function listaExperiencias($usuario_id)
     {
         require_once 'ConexaoBD.php';   
         
@@ -128,7 +124,7 @@ class ExperienciaProfissional
             die("Connection failed: " . $conn->connect_error);
         } 
 
-        $sql = "SELECT * FROM experienciaProfissional WHERE idusuario =  '".$idusuario."'" ;
+        $sql = "SELECT * FROM experienciaprofissional WHERE usuario_id = '".$usuario_id."'";
         $re = $conn->query($sql);
         $conn->close();
         return $re;
