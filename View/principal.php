@@ -94,12 +94,12 @@
     <!--Incial -->
     <header class="w3-container w3-padding-32 w3-center " id="home">
         <h1>
-            <img src="../img/latas.jpeg" alt="Logo" class="w3-image" width="50%">
+            <img src="../img/Lata.jpg" alt="Logo" class="w3-image" width="25%">
             </br>
         </h1>
-        <a class="w3-text-cyan"href="">Designed by Hanna / Canva</a>
+        <a class="w3-text-tomato"href="">Designed by Hanna / Canva</a>
         <br>
-        <h1 class="w3-text-cyan">
+        <h1 class="w3-text-tomato">
             SISTEMA DE CURRICULOS
         </h1>
     </header>
